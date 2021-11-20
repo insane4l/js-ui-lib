@@ -42,6 +42,14 @@ $.prototype.init = function(selector) {
     if (!selector) {
         return this; // object
     }
+
+    if (selector.tagName) {
+        this[0] = selector;
+        this.length = 1;
+        
+        return this;
+    }
+
     Object.assign(this, document.querySelectorAll(selector)) // "this" contains prototype prop (not plain object)
     this.length = document.querySelectorAll(selector).length; // elements length prop
 

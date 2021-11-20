@@ -3,3 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.main__btn {
+    width: 50px;
+    height: 30px;
+    background-color: green;
+}
+
+.active {
+    background-color: red;
+}
