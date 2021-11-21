@@ -2,9 +2,7 @@ import './lib/lib';
 
 
 
-$('div').hide();
-$('.active').show().addClass('indigo').toggleClass('testtest').click(sayHello);
-// $('div').toggle();
+
 
 $('button').on('click', function() {
     $(this).toggleClass('active');
@@ -13,3 +11,8 @@ $('button').on('click', function() {
 function sayHello() {
     console.log('Hello!');
 }
+
+// console.log($('div').eq(5).find('.find-me'));
+// console.log($('.child').closest('.closest-test'));
+// console.log($('.child2').closest('.closest-test-mult'));
+console.log($('.find-siblings').siblings());
