@@ -1,15 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import './general/base.scss';
+@import './general/variables.scss';
+@import './general/typography.scss';
 
-.main__btn {
-    width: 50px;
-    height: 30px;
-    background-color: green;
-}
-
-.active {
-    background-color: red;
-}
+@import './components/components.scss';
+@import './helpers/helpers.scss';
