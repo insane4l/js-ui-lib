@@ -166,7 +166,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_classes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/classes */ "./src/js/lib/modules/classes.js");
 /* harmony import */ var _modules_events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/events */ "./src/js/lib/modules/events.js");
 /* harmony import */ var _modules_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/actions */ "./src/js/lib/modules/actions.js");
+/* harmony import */ var _modules_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/animations */ "./src/js/lib/modules/animations.js");
  // here we add new methods to library
+
 
 
 
@@ -296,6 +298,78 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.siblings = function () {
 
   for (; numberOfItems < thisLength; numberOfItems++) {
     delete this[numberOfItems];
+  }
+
+  return this;
+};
+
+/***/ }),
+
+/***/ "./src/js/lib/modules/animations.js":
+/*!******************************************!*\
+  !*** ./src/js/lib/modules/animations.js ***!
+  \******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.animateOverTime = function (dur, cb, fin) {
+  let timeStart;
+
+  function _animateOverTime(time) {
+    if (!timeStart) {
+      timeStart = time;
+    }
+
+    let timeElapsed = time - timeStart;
+    let complection = Math.min(timeElapsed / dur, 1);
+    cb(complection);
+
+    if (timeElapsed < dur) {
+      requestAnimationFrame(_animateOverTime);
+    } else {
+      if (typeof fin === 'function') {
+        fin();
+      }
+    }
+  }
+
+  return _animateOverTime;
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeIn = function (dur, display, fin) {
+  for (let i = 0; i < this.length; i++) {
+    this[i].style.display = display || 'block';
+
+    const _fadeIn = complection => {
+      // must be arrow func because of call context
+      this[i].style.opacity = complection;
+    };
+
+    const animation = this.animateOverTime(dur, _fadeIn, fin);
+    requestAnimationFrame(animation);
+  }
+
+  return this;
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeOut = function (dur, fin) {
+  for (let i = 0; i < this.length; i++) {
+    const _fadeOut = complection => {
+      // must be arrow func because of call context
+      this[i].style.opacity = 1 - complection;
+
+      if (complection === 1) {
+        this[i].style.display = 'none';
+      }
+    };
+
+    const animation = this.animateOverTime(dur, _fadeOut, fin);
+    requestAnimationFrame(animation);
   }
 
   return this;
@@ -472,6 +546,8 @@ function sayHello() {
 
 
 console.log($('.find-siblings').siblings());
+console.log($('div').eq(1));
+$('div').eq(0).fadeOut(2222);
 
 /***/ })
 

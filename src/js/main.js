@@ -16,3 +16,6 @@ function sayHello() {
 // console.log($('.child').closest('.closest-test'));
 // console.log($('.child2').closest('.closest-test-mult'));
 console.log($('.find-siblings').siblings());
+
+console.log($('div').eq(1));
+$('div').eq(0).fadeOut(2222);
