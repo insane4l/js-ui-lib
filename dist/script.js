@@ -375,6 +375,36 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeOut = function (dur,
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeToggle = function (dur, display, fin) {
+  for (let i = 0; i < this.length; i++) {
+    if (window.getComputedStyle(this[i]).display === 'none') {
+      this[i].style.display = display || 'block';
+
+      const _fadeIn = complection => {
+        // must be arrow func because of call context
+        this[i].style.opacity = complection;
+      };
+
+      const animation = this.animateOverTime(dur, _fadeIn, fin);
+      requestAnimationFrame(animation);
+    } else {
+      const _fadeOut = complection => {
+        // must be arrow func because of call context
+        this[i].style.opacity = 1 - complection;
+
+        if (complection === 1) {
+          this[i].style.display = 'none';
+        }
+      };
+
+      const animation = this.animateOverTime(dur, _fadeOut, fin);
+      requestAnimationFrame(animation);
+    }
+  }
+
+  return this;
+};
+
 /***/ }),
 
 /***/ "./src/js/lib/modules/classes.js":
