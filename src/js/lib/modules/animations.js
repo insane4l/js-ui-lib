@@ -76,7 +76,7 @@ $.prototype.fadeToggle = function(dur, display, fin) {
 
             const animation = this.animateOverTime(dur, _fadeIn, fin);
             requestAnimationFrame(animation);
-            
+
         } else {
 
             const _fadeOut = (complection) => { // must be arrow func because of call context

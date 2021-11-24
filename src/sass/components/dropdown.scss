@@ -1,0 +1,42 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+    &__toggle {
+        &:after {
+            content: '';
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: 3px;
+            border-top: 4px solid;
+            border-right: 4px solid transparent;
+            border-bottom: 0;
+            border-left: 4px solid transparent;
+        }
+    }
+    &__list {
+        position: absolute;
+        z-index: 999;
+        top: 100%;
+        left: 0;
+        min-width: 100%;
+        padding: 6px 0;
+        border: 1px solid rgba(0, 0, 0, .15);
+        border-radius: 2px;
+        background-color: #fff;
+        list-style: none;
+        &-item {
+            width: 100%;
+        }
+    }
+    &__link {
+        display: block;
+        width: 100%;
+        padding: 8px 10px;
+        color: $dark;
+        background-color: transparent;
+        text-decoration: none;
+        &:hover {
+            background-color: rgba(0, 0, 0, .05);
+        }
+    }
+}
