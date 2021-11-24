@@ -111,6 +111,69 @@ Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.dropdown__toggle').dropd
 
 /***/ }),
 
+/***/ "./src/js/lib/components/modal.js":
+/*!****************************************!*\
+  !*** ./src/js/lib/components/modal.js ***!
+  \****************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function () {
+  for (let i = 0; i < this.length; i++) {
+    const target = this[i].getAttribute('data-target');
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).click(e => {
+      e.preventDefault();
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeIn(500);
+      toggleBodyOverflow(true);
+    });
+  }
+
+  const closeElements = document.querySelectorAll('[data-close]');
+  closeElements.forEach(el => {
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(el).click(() => {
+      closeModal();
+    });
+  });
+  Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal__overlay').click(e => {
+    if (e.target.classList.contains('modal__overlay')) {
+      closeModal();
+    }
+  });
+
+  function closeModal() {
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal__overlay')[0].style.display = 'none';
+    toggleBodyOverflow();
+  }
+
+  function toggleBodyOverflow(createMargin) {
+    if (!createMargin) {
+      document.body.style.overflow = '';
+      document.body.style.marginRight = `0px`;
+      return;
+    }
+
+    const box = document.createElement('div');
+    document.body.appendChild(box);
+    box.style.visibility = "hidden";
+    box.style.width = '50px';
+    box.style.height = '50px';
+    box.style.overflowY = 'scroll';
+    const scrollWidth = box.offsetWidth - box.clientWidth;
+    box.remove();
+    document.body.style.overflow = 'hidden';
+    document.body.style.marginRight = `${scrollWidth}px`;
+  }
+};
+
+Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-toggle="modal"]').modal();
+
+/***/ }),
+
 /***/ "./src/js/lib/core.js":
 /*!****************************!*\
   !*** ./src/js/lib/core.js ***!
@@ -193,7 +256,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/actions */ "./src/js/lib/modules/actions.js");
 /* harmony import */ var _modules_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/animations */ "./src/js/lib/modules/animations.js");
 /* harmony import */ var _components_dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/dropdown */ "./src/js/lib/components/dropdown.js");
+/* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/modal */ "./src/js/lib/components/modal.js");
  // here we add new methods to library
+
 
 
 
