@@ -19,3 +19,29 @@ import './lib/lib';
 
 // console.log($('div').eq(1));
 // $('div').eq(0).fadeOut(2222);
+
+
+$('#modalTrigger').click(() => $('#modalTrigger').createModal({
+    text: {
+        title: 'Modal title',
+        body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quae error tempora accusamus architecto quis, adipisci, nihil est enim iste fugiat, vitae cupiditate inventore at? Nemo?'
+    },
+    btns: {
+        count: 2,
+        settings: [
+            [
+                'Close',
+                ['btn-danger', 'mr-10'],
+                true
+            ],
+            [
+                'Save changes',
+                ['btn-success'],
+                false,
+                () => {
+                    alert('Data saved');
+                }
+            ],
+        ]
+    }
+}));

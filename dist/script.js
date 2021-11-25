@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
 
 
-_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function () {
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (alreadyExists) {
   for (let i = 0; i < this.length; i++) {
     const target = this[i].getAttribute('data-target');
     Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).click(e => {
@@ -131,22 +131,29 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function () {
       Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeIn(500);
       toggleBodyOverflow(true);
     });
+    const closeElements = document.querySelectorAll(`${target} [data-close]`);
+    console.log(target);
+    closeElements.forEach(el => {
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(el).click(() => {
+        closeModals(Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target));
+      });
+    });
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal__overlay').click(e => {
+      if (e.target.classList.contains('modal__overlay')) {
+        closeModals(Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target));
+      }
+    });
   }
 
-  const closeElements = document.querySelectorAll('[data-close]');
-  closeElements.forEach(el => {
-    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(el).click(() => {
-      closeModal();
-    });
-  });
-  Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal__overlay').click(e => {
-    if (e.target.classList.contains('modal__overlay')) {
-      closeModal();
-    }
-  });
+  function closeModals(modals) {
+    for (let i = 0; i < modals.length; i++) {
+      modals[i].style.display = 'none';
 
-  function closeModal() {
-    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal__overlay')[0].style.display = 'none';
+      if (alreadyExists) {
+        modals[i].remove();
+      }
+    }
+
     toggleBodyOverflow();
   }
 
@@ -171,6 +178,60 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function () {
 };
 
 Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-toggle="modal"]').modal();
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.createModal = function () {
+  let {
+    text,
+    btns
+  } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  for (let i = 0; i < this.length; i++) {
+    let modal = document.createElement('div');
+    modal.classList.add('modal__overlay');
+    modal.setAttribute('id', this[i].getAttribute('data-target').slice(1));
+    const buttons = [];
+
+    for (let j = 0; j < btns.count; j++) {
+      let settings = btns.settings[j];
+      let btn = document.createElement('button');
+      btn.classList.add('btn', ...settings[1]);
+      btn.textContent = settings[0];
+
+      if (settings[2]) {
+        btn.setAttribute('data-close', 'true');
+      }
+
+      if (settings[3] && typeof (settings[3] === 'function')) {
+        btn.addEventListener('click', settings[3]);
+      }
+
+      buttons.push(btn);
+    }
+
+    modal.innerHTML = `
+            <div class="modal">
+                <button class="close" data-close>
+                    <span>&times;</span>
+                </button>
+                <div class="modal__header">
+                    <div class="modal__title">
+                        ${text.title}
+                    </div>
+                </div>
+                <div class="modal__body">
+                    ${text.body}
+                </div>
+                <div class="modal__footer">
+
+                </div>
+            </div>
+        `;
+    modal.querySelector('.modal__footer').append(...buttons);
+    document.body.appendChild(modal);
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).modal(true);
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i].getAttribute('data-target')).fadeIn(500);
+  }
+};
 
 /***/ }),
 
@@ -667,6 +728,19 @@ __webpack_require__.r(__webpack_exports__);
 // console.log($('.find-siblings').siblings());
 // console.log($('div').eq(1));
 // $('div').eq(0).fadeOut(2222);
+
+$('#modalTrigger').click(() => $('#modalTrigger').createModal({
+  text: {
+    title: 'Modal title',
+    body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quae error tempora accusamus architecto quis, adipisci, nihil est enim iste fugiat, vitae cupiditate inventore at? Nemo?'
+  },
+  btns: {
+    count: 2,
+    settings: [['Close', ['btn-danger', 'mr-10'], true], ['Save changes', ['btn-success'], false, () => {
+      alert('Data saved');
+    }]]
+  }
+}));
 
 /***/ })
 
