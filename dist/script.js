@@ -132,7 +132,6 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (alread
       toggleBodyOverflow(true);
     });
     const closeElements = document.querySelectorAll(`${target} [data-close]`);
-    console.log(target);
     closeElements.forEach(el => {
       Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(el).click(() => {
         closeModals(Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target));
@@ -235,6 +234,30 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.createModal = function (
 
 /***/ }),
 
+/***/ "./src/js/lib/components/tab.js":
+/*!**************************************!*\
+  !*** ./src/js/lib/components/tab.js ***!
+  \**************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.tab = function () {
+  for (let i = 0; i < this.length; i++) {
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).click(() => {
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).addClass('tab-active').siblings().removeClass('tab-active').closest('.tab').find('.tab__content').removeClass('content-active').eq(Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).index()).addClass('content-active');
+    });
+  }
+};
+
+Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('#exampleTab .tab__list-item').tab();
+
+/***/ }),
+
 /***/ "./src/js/lib/core.js":
 /*!****************************!*\
   !*** ./src/js/lib/core.js ***!
@@ -318,7 +341,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/animations */ "./src/js/lib/modules/animations.js");
 /* harmony import */ var _components_dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/dropdown */ "./src/js/lib/components/dropdown.js");
 /* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/modal */ "./src/js/lib/components/modal.js");
+/* harmony import */ var _components_tab__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/tab */ "./src/js/lib/components/tab.js");
  // here we add new methods to library
+
 
 
 

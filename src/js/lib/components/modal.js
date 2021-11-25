@@ -10,7 +10,6 @@ $.prototype.modal = function(alreadyExists) {
         });
 
         const closeElements = document.querySelectorAll(`${target} [data-close]`);
-        console.log(target);
         
         closeElements.forEach(el => {
             $(el).click(() => {

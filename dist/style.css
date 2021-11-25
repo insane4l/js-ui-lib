@@ -180,6 +180,34 @@
     font-weight: 500;
     font-size: 20px; }
 
+.tab {
+  min-width: 700px;
+  margin: 50px auto; }
+  .tab__list {
+    display: flex;
+    width: 100%;
+    min-height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px 4px 0 0; }
+    .tab__list-item {
+      font-size: 18px;
+      line-height: 27px;
+      padding: 10px 20px;
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      cursor: pointer; }
+      .tab__list-item:last-child {
+        border-right: none; }
+    .tab__list .tab-active {
+      background-color: rgba(0, 0, 0, 0.1); }
+  .tab__content {
+    display: none;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: none;
+    border-radius: 0 0 4px 4px; }
+  .tab .content-active {
+    display: block; }
+
 .text-center {
   text-align: center; }
 
