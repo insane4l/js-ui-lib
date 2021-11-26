@@ -186,6 +186,15 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.carousel = function () {
       indicators.forEach(item => item.classList.remove('indicator-active'));
       indicators[slideIndex].classList.add('indicator-active');
     });
+    const sliderId = this[i].getAttribute('id');
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(`#${sliderId} .carousel__indicators li`).click(e => {
+      const slideTo = e.target.getAttribute('data-slide-to');
+      slideIndex = slideTo;
+      offset = +width.replace(/\D/g, '') * slideTo;
+      slidesWrapper.style.transform = `translateX(-${offset}px)`;
+      indicators.forEach(item => item.classList.remove('indicator-active'));
+      indicators[slideIndex].classList.add('indicator-active');
+    });
   }
 };
 
