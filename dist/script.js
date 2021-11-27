@@ -105,7 +105,6 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.accordion = function () 
 
   for (let i = 0; i < this.length; i++) {
     Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).click(() => {
-      console.log('kaka');
       Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).toggleClass(titleActive);
       Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i].nextElementSibling).toggleClass(contentActive);
 
@@ -916,7 +915,8 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.post = async function (u
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
- // $('button').on('click', function() {
+ // lib tests
+// $('button').on('click', function() {
 //     $(this).toggleClass('active');
 // })
 // function sayHello() {
@@ -928,19 +928,31 @@ __webpack_require__.r(__webpack_exports__);
 // console.log($('.find-siblings').siblings());
 // console.log($('div').eq(1));
 // $('div').eq(0).fadeOut(2222);
-
-$('#modalTrigger').click(() => $('#modalTrigger').createModal({
-  text: {
-    title: 'Modal title',
-    body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quae error tempora accusamus architecto quis, adipisci, nihil est enim iste fugiat, vitae cupiditate inventore at? Nemo?'
-  },
-  btns: {
-    count: 2,
-    settings: [['Close', ['btn-danger', 'mr-10'], true], ['Save changes', ['btn-success'], false, () => {
-      alert('Data saved');
-    }]]
-  }
-}));
+// Dynamic modal init, settings
+// $('#modalTrigger').click(() => $('#modalTrigger').createModal({
+//     text: {
+//         title: 'Modal title',
+//         body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quae error tempora accusamus architecto quis, adipisci, nihil est enim iste fugiat, vitae cupiditate inventore at? Nemo?'
+//     },
+//     btns: {
+//         count: 2,
+//         settings: [
+//             [
+//                 'Close',
+//                 ['btn-danger', 'mr-10'],
+//                 true
+//             ],
+//             [
+//                 'Save changes',
+//                 ['btn-success'],
+//                 false,
+//                 () => {
+//                     alert('Data saved');
+//                 }
+//             ],
+//         ]
+//     }
+// }));
 
 /***/ })
 

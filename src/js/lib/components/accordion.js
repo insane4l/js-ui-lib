@@ -5,7 +5,7 @@ $.prototype.accordion = function(titleActive = 'accordion__title-active', conten
 
     for (let i = 0; i < this.length; i++) {
         $(this[i]).click(() => {
-            console.log('kaka');
+
             $(this[i]).toggleClass(titleActive);
             $(this[i].nextElementSibling).toggleClass(contentActive);
 

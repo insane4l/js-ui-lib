@@ -182,7 +182,7 @@
 
 .tab {
   max-width: 700px;
-  margin: 50px auto; }
+  margin: 0 auto; }
   .tab__list {
     display: flex;
     width: 100%;
@@ -401,6 +401,18 @@
 .ml-20 {
   margin-left: 20px; }
 
+.mt-50 {
+  margin-top: 50px; }
+
+.mr-50 {
+  margin-right: 50px; }
+
+.mb-50 {
+  margin-bottom: 50px; }
+
+.ml-50 {
+  margin-left: 50px; }
+
 .p10 {
   padding: 10px; }
 
@@ -454,3 +466,33 @@
 
 .h-500 {
   height: 500px; }
+
+h1 {
+  font-size: 36px; }
+
+h2 {
+  font-size: 26px; }
+
+form {
+  width: 450px;
+  margin: 0 auto; }
+
+input {
+  width: 280px;
+  height: 45px;
+  padding: 0 10px;
+  font-size: 18px;
+  vertical-align: middle;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  outline: none; }
+
+.container {
+  padding-top: 80px;
+  padding-bottom: 40px; }
+
+.block-shadow {
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4); }
+
+.footer {
+  background-color: #222; }
